@@ -1,0 +1,253 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+
+.main-page{
+    padding: 20px;
+    background-color: rgb(9, 42, 62);
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;    
+    color: white;
+}
+
+.profile{
+    display: flex;
+    align-items: center;              
+    font-size: 20px;
+}
+
+.profile p, img{
+    margin: 5px;
+    font-weight: bold;
+}
+
+.profile-img{
+    border-radius: 50%;
+}
+
+.nav-list{
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-l{
+    text-decoration: none;
+}
+
+.resume-btn{
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid orange;
+    border-radius: 10%;
+}
+
+.nav-list > li{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.main-content{
+    display: flex;
+}
+
+.main-left{
+    width: 50%;
+    padding: 100px;
+}
+.main-left h1, h2, h4{
+    color: white
+}
+
+.main-right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-right img{
+    width: 50%;
+    border-radius: 50%;
+}
+
+.skills, .blogs, .education{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(248, 233, 205), rgb(203, 203, 247));
+}
+
+.project{
+    padding-top: 50px;
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(248, 233, 205), rgb(203, 203, 247));
+
+}
+
+.contact{
+    padding-top: 50px;
+    text-align: center;
+    background-color: rgb(9, 42, 62);
+    color: white;
+    padding-bottom: 50px;
+    margin-bottom: 0%;
+}
+
+.contact-details{
+    display: flex;
+    justify-content: center;
+}
+
+.email-contact{
+    margin: 30px;
+}
+
+.email-contact a{
+    color: white;
+    text-decoration: none;
+    border: 1px solid orange;
+    margin: 20px;
+    padding:15px;
+    border-radius: 10px;
+}
+
+.skills-info, .blogs-info{
+    font-size: 22px;
+}
+
+.skills-card-container{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin-left: 10%;
+    padding: 25px;
+    box-shadow: 5px 5px 5px 5px rgb(206, 204, 204);
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+.skills-card-container div{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orange-theme{
+    color: rgb(245, 142, 23);
+}
+
+.project-h, .edu-p{
+    color:  rgb(245, 142, 23);
+}
+
+.blogs-btn{
+    color: white;
+    background-color: rgb(245, 142, 23);
+    font-size: 20px;
+    font-family: Poppins;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    box-shadow: 5px 5px 5px 5px rgb(206, 204, 204);
+    border-radius: 10px;
+    border-color: orange;
+}
+
+.blogs-videos{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.project-info, .project-info{
+    font-size: 22px;
+}
+
+.project-box{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-right: 150px;
+}
+
+.project-card-container{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+    margin-left: 10%;
+    padding: 25px;
+    border: 1px solid orange;
+
+    box-shadow: 5px 5px 5px 5px rgb(206, 204, 204);
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+.project-card-container div{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.project-heading, .project-info{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.education-info, .education-info{
+    font-size: 22px;
+}
+
+.education-card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.education-card-container div{
+    padding-left: 50px;
+    padding-right: 10px;
+    margin: 20px;
+    width: 30%;
+    border-radius: 10px;
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 5px 5px 5px 5px rgb(206, 204, 204);
+    border-radius: 10px;
+}
+
+.education-heading, .education-info{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
