@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — PATRAM HAVELI | Indian & Continental Dining</title>
+  <meta name="description" content="The full menu at Patram Haveli, Haridwar — soups, tandoor grills, Indian mains, continental plates, breads, biryanis and desserts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════ CUSTOM CURSOR ══════════ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+    <nav class="nav-links">
+      <a href="restaurant.html" data-magnetic>Restaurant</a>
+      <a href="hotel.html" data-magnetic>Hotel</a>
+      <a href="banquets.html" data-magnetic>Banquets</a>
+      <a href="experiences.html" data-magnetic>Experiences</a>
+      <a href="gallery.html" data-magnetic>Gallery</a>
+      <a href="about.html" data-magnetic>About</a>
+      <a href="contact.html" data-magnetic>Contact</a>
+      <a href="reservations.html" class="nav-cta" data-magnetic>Reserve</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="restaurant.html">Restaurant</a>
+    <a href="menu.html">Menu</a>
+    <a href="hotel.html">Hotel</a>
+    <a href="banquets.html">Banquets</a>
+    <a href="weddings.html">Weddings</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservations.html">Reserve</a>
+  </div>
+
+  <!-- ══════════ PAGE HERO ══════════ -->
+  <section class="page-hero">
+    <div class="page-hero-media">
+      <img class="page-hero-img" src="https://image.pollinations.ai/prompt/indian%20thali%20feast%20copper%20bowls%20curries%20naan%20overhead%20dark%20moody%20food%20photography%20cinematic?width=1920&height=1080&nologo=true&seed=401" alt="A spread from the Patram Haveli kitchen" />
+      <div class="hero-grain"></div>
+    </div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow" data-reveal>THE KITCHEN'S LEDGER</p>
+      <h1 class="page-hero-title">
+        <span class="line-mask"><span class="line" data-line>Tonight's</span></span>
+        <span class="line-mask"><span class="line line-italic" data-line>Composition</span></span>
+      </h1>
+      <p class="page-hero-sub" data-reveal>Indian classics beside continental craft — every plate made from that morning's market.</p>
+      <p class="breadcrumb" data-reveal><a href="index.html">Home</a><i>✦</i><a href="restaurant.html">Restaurant</a><i>✦</i>Menu</p>
+    </div>
+  </section>
+
+  <!-- ══════════ MENU ══════════ -->
+  <section class="menu section">
+    <div class="container menu-grid">
+      <div class="menu-side">
+        <p class="section-eyebrow" data-reveal>The Menu</p>
+        <h2 class="section-title" data-reveal>From tandoor<br /><em>to table</em></h2>
+        <p class="menu-course-note" data-reveal><span class="veg-dot"></span>Vegetarian &nbsp;&nbsp; <span class="veg-dot non-veg"></span>Non-vegetarian</p>
+        <figure class="menu-img" data-parallax="-30">
+          <img src="https://image.pollinations.ai/prompt/chef%20hands%20plating%20indian%20gourmet%20dish%20microgreens%20dark%20kitchen%20fine%20dining%20photography?width=700&height=900&nologo=true&seed=402" alt="Plating a course" loading="lazy" />
+        </figure>
+        <figure class="menu-img" data-parallax="30" style="margin-top: 34px;">
+          <img src="https://image.pollinations.ai/prompt/fresh%20naan%20bread%20tandoor%20butter%20garlic%20dark%20rustic%20food%20photography?width=700&height=900&nologo=true&seed=403" alt="Fresh naan" loading="lazy" />
+        </figure>
+      </div>
+
+      <div class="menu-list">
+        <h3 class="menu-course" data-reveal>Soups & Starters</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Tamatar Dhaniya Shorba</h4><span class="menu-dots"></span><span class="menu-price">₹225</span></div>
+          <p>Fire-roasted tomato broth, fresh coriander, cumin crackle</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Murgh Yakhni Shorba</h4><span class="menu-dots"></span><span class="menu-price">₹265</span></div>
+          <p>Slow-simmered chicken broth, saffron, mint oil</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Dahi Ke Kebab</h4><span class="menu-dots"></span><span class="menu-price">₹345</span></div>
+          <p>Hung-curd croquettes, roasted chilli chutney, pickled onion</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Burrata & Tomato Carpaccio</h4><span class="menu-dots"></span><span class="menu-price">₹425</span></div>
+          <p>Creamy burrata, heirloom tomatoes, basil oil, lavash</p>
+        </div>
+
+        <h3 class="menu-course" data-reveal>Tandoor & Grills</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Angara Paneer Tikka</h4><span class="menu-dots"></span><span class="menu-price">₹395</span></div>
+          <p>Charcoal-kissed cottage cheese, smoked yoghurt, mint chutney</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Tandoori Bharwan Aloo</h4><span class="menu-dots"></span><span class="menu-price">₹345</span></div>
+          <p>Potatoes stuffed with khoya & nuts, kasundi mustard glaze</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Murgh Malai Tikka</h4><span class="menu-dots"></span><span class="menu-price">₹445</span></div>
+          <p>Cream-cheese marinated chicken, green cardamom, char</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Ajwaini Fish Tikka</h4><span class="menu-dots"></span><span class="menu-price">₹495</span></div>
+          <p>River fish, carom-yoghurt marinade, burnt lemon</p>
+        </div>
+
+        <h3 class="menu-course" data-reveal>Indian Mains</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Patram Dal Makhani</h4><span class="menu-dots"></span><span class="menu-price">₹425</span></div>
+          <p>Black lentils simmered overnight, white butter, tandoor smoke</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Paneer Lababdar</h4><span class="menu-dots"></span><span class="menu-price">₹425</span></div>
+          <p>Cottage cheese, tomato-onion masala, cream, kasuri methi</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Murgh Makhani</h4><span class="menu-dots"></span><span class="menu-price">₹495</span></div>
+          <p>Tandoori chicken, tomato-cashew gravy, kasuri methi, cream</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Himalayan Mutton Rogan Josh</h4><span class="menu-dots"></span><span class="menu-price">₹595</span></div>
+          <p>Slow-braised mutton, Kashmiri chillies, mountain garlic</p>
+        </div>
+
+        <h3 class="menu-course" data-reveal>Continental</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Truffle Khumb Risotto</h4><span class="menu-dots"></span><span class="menu-price">₹545</span></div>
+          <p>Carnaroli rice, wild mushrooms, truffle oil, aged parmesan</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Penne alla Makhani</h4><span class="menu-dots"></span><span class="menu-price">₹445</span></div>
+          <p>Our fusion signature — penne in makhani cream, basil, parmesan</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Herb-Grilled Chicken</h4><span class="menu-dots"></span><span class="menu-price">₹525</span></div>
+          <p>Chargrilled supreme, rosemary jus, garlic mash, seasonal greens</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Pan-Seared River Trout</h4><span class="menu-dots"></span><span class="menu-price">₹595</span></div>
+          <p>Uttarakhand trout, lemon-caper butter, crushed baby potatoes</p>
+        </div>
+
+        <h3 class="menu-course" data-reveal>Biryani, Breads & Rice</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Haveli Dum Biryani</h4><span class="menu-dots"></span><span class="menu-price">₹465</span></div>
+          <p>Aged basmati, saffron, dum-sealed handi, mirch ka salan</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot non-veg"></span>Murgh Dum Biryani</h4><span class="menu-dots"></span><span class="menu-price">₹525</span></div>
+          <p>Chicken layered with saffron rice, fried onion, burani raita</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>The Bread Basket</h4><span class="menu-dots"></span><span class="menu-price">₹295</span></div>
+          <p>Butter naan, garlic naan, laccha paratha, tandoori roti</p>
+        </div>
+
+        <h3 class="menu-course" data-reveal>Desserts</h3>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Gulab Jamun & Rabri</h4><span class="menu-dots"></span><span class="menu-price">₹295</span></div>
+          <p>Slow-fried khoya dumplings, saffron rabri, rose petals</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Kesar Pista Kulfi</h4><span class="menu-dots"></span><span class="menu-price">₹265</span></div>
+          <p>Hand-churned saffron kulfi, pistachio, falooda</p>
+        </div>
+        <div class="menu-item" data-reveal>
+          <div class="menu-item-head"><h4><span class="veg-dot"></span>Dark Chocolate Fondant</h4><span class="menu-dots"></span><span class="menu-price">₹345</span></div>
+          <p>Molten 70% chocolate, vanilla bean ice cream, smoked salt</p>
+        </div>
+
+        <a href="reservations.html" class="btn btn-ghost menu-btn" data-reveal data-magnetic>Chef's Thali Experience — ₹1,450 per guest</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA BAND ══════════ -->
+  <section class="cta-band">
+    <h2 data-reveal>Hungry<br /><em>already?</em></h2>
+    <p data-reveal>Reserve a table in the hall, the courtyard or up on the rooftop.</p>
+    <div class="hero-actions" data-reveal>
+      <a href="reservations.html" class="btn btn-solid" data-magnetic>Reserve a Table</a>
+      <a href="restaurant.html" class="btn btn-ghost" data-magnetic>About the Restaurant</a>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+        <p>Restaurant · Hotel · Banquets —<br />a heritage of hospitality in Haridwar.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <p>
+          <a href="restaurant.html">Restaurant</a> · <a href="menu.html">Menu</a><br />
+          <a href="hotel.html">Hotel</a> · <a href="banquets.html">Banquets</a><br />
+          <a href="weddings.html">Weddings</a> · <a href="experiences.html">Experiences</a><br />
+          <a href="gallery.html">Gallery</a> · <a href="about.html">About</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <p>Khasra No. 107, Santarshah<br />Haridwar, Uttarakhand 249405</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p><a href="tel:+918864829962">+91 88648 29962</a><br /><a href="mailto:hello@patramhaveli.in">hello@patramhaveli.in</a><br />Open Daily · 11 AM — 11 PM</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Patram Haveli. All rights reserved.</span>
+      <span>Instagram · Facebook · X</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

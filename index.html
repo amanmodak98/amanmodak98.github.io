@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PATRAM HAVELI — Restaurant · Hotel · Banquets | Haridwar</title>
+  <meta name="description" content="Patram Haveli, Haridwar — a heritage destination for fine dining, elegant stays and grand celebrations. Restaurant, hotel and banquet halls under one roof." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════ PRELOADER ══════════ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <span class="preloader-logo">PATRAM&nbsp;HAVELI</span>
+      <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
+      <span class="preloader-count" id="preloaderCount">0%</span>
+    </div>
+  </div>
+
+  <!-- ══════════ CUSTOM CURSOR ══════════ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+    <nav class="nav-links">
+      <a href="restaurant.html" data-magnetic>Restaurant</a>
+      <a href="hotel.html" data-magnetic>Hotel</a>
+      <a href="banquets.html" data-magnetic>Banquets</a>
+      <a href="experiences.html" data-magnetic>Experiences</a>
+      <a href="gallery.html" data-magnetic>Gallery</a>
+      <a href="about.html" data-magnetic>About</a>
+      <a href="contact.html" data-magnetic>Contact</a>
+      <a href="reservations.html" class="nav-cta" data-magnetic>Reserve</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="restaurant.html">Restaurant</a>
+    <a href="menu.html">Menu</a>
+    <a href="hotel.html">Hotel</a>
+    <a href="banquets.html">Banquets</a>
+    <a href="weddings.html">Weddings</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservations.html">Reserve</a>
+  </div>
+
+  <!-- ══════════ HERO — VIDEO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap" id="heroVideoWrap">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline
+        poster="https://image.pollinations.ai/prompt/indian%20heritage%20haveli%20courtyard%20at%20dusk%20warm%20lanterns%20arches%20cinematic%204k?width=1920&height=1080&nologo=true&seed=7">
+        <source src="https://videos.pexels.com/video-files/2620043/2620043-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-grain"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-reveal>HARIDWAR · RESTAURANT ✦ HOTEL ✦ BANQUETS</p>
+      <h1 class="hero-title">
+        <span class="line-mask"><span class="line" data-line>A Heritage of</span></span>
+        <span class="line-mask"><span class="line line-italic" data-line>Hospitality</span></span>
+      </h1>
+      <p class="hero-sub" data-reveal>Dine, stay and celebrate within the warm stone walls of a haveli —<br class="hide-mobile" /> minutes from the ghats of the holy Ganga.</p>
+      <div class="hero-actions" data-reveal>
+        <a href="reservations.html" class="btn btn-solid" data-magnetic>Reserve Now</a>
+        <a href="#pillars" class="btn btn-ghost" data-magnetic>Discover Patram</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-scroll" id="scrollHint">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+      <div class="hero-meta">
+        <span>Santarshah · Haridwar · Uttarakhand</span>
+        <span>Open Daily · 11 AM — 11 PM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>Fine Dining Restaurant</span><i>✦</i>
+      <span>Heritage Hotel Rooms</span><i>✦</i>
+      <span>Grand Banquet Halls</span><i>✦</i>
+      <span>Destination Weddings</span><i>✦</i>
+      <span>Fine Dining Restaurant</span><i>✦</i>
+      <span>Heritage Hotel Rooms</span><i>✦</i>
+      <span>Grand Banquet Halls</span><i>✦</i>
+      <span>Destination Weddings</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ══════════ ABOUT TEASER ══════════ -->
+  <section class="about section" id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow" data-reveal>Welcome to Patram</p>
+        <h2 class="section-title" data-reveal>One haveli,<br /><em>three worlds</em></h2>
+        <p class="about-body" data-reveal>
+          Patram Haveli brings together a fine-dining restaurant, a heritage hotel and
+          grand banquet halls under one carved-stone roof in Haridwar. Whether it is an
+          intimate dinner, a restful night after the Ganga aarti, or a wedding of a
+          thousand guests — the haveli holds it all with equal grace.
+        </p>
+        <div class="about-stats">
+          <div class="stat" data-reveal>
+            <span class="stat-num" data-count="28">0</span>
+            <span class="stat-label">Heritage Rooms</span>
+          </div>
+          <div class="stat" data-reveal>
+            <span class="stat-num" data-count="1000">0</span>
+            <span class="stat-label">Banquet Capacity</span>
+          </div>
+          <div class="stat" data-reveal>
+            <span class="stat-num" data-count="120">0</span>
+            <span class="stat-label">Dishes on Menu</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-images">
+        <figure class="about-img about-img-a" data-parallax="-40">
+          <img src="https://image.pollinations.ai/prompt/indian%20haveli%20courtyard%20arches%20carved%20sandstone%20warm%20evening%20light%20heritage%20architecture%20cinematic?width=700&height=900&nologo=true&seed=21" alt="Haveli courtyard" loading="lazy" />
+        </figure>
+        <figure class="about-img about-img-b" data-parallax="50">
+          <img src="https://image.pollinations.ai/prompt/indian%20chef%20plating%20gourmet%20dish%20tandoor%20kitchen%20dark%20moody%20cinematic?width=600&height=750&nologo=true&seed=22" alt="Chef at work" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THREE PILLARS ══════════ -->
+  <section class="section" id="pillars" style="background: var(--bg-soft);">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>The Haveli</p>
+      <h2 class="section-title" data-reveal>Dine. Stay.<br /><em>Celebrate.</em></h2>
+    </div>
+    <div class="pillar-grid container" style="margin-top: clamp(30px, 4vw, 50px);">
+      <a href="restaurant.html" class="pillar-card" data-reveal-card>
+        <img src="https://image.pollinations.ai/prompt/luxury%20indian%20restaurant%20interior%20brass%20lanterns%20dark%20wood%20candlelight%20cinematic?width=800&height=1100&nologo=true&seed=61" alt="The restaurant" loading="lazy" />
+        <div class="pillar-info">
+          <span class="pillar-tag">01 — Dine</span>
+          <h3>The Restaurant</h3>
+          <p>Indian classics and continental favourites, from tandoor to table.</p>
+          <span class="pillar-link">Explore Dining →</span>
+        </div>
+      </a>
+      <a href="hotel.html" class="pillar-card" data-reveal-card>
+        <img src="https://image.pollinations.ai/prompt/heritage%20hotel%20room%20india%20carved%20wood%20bed%20warm%20lamps%20luxury%20interior%20cinematic?width=800&height=1100&nologo=true&seed=62" alt="The hotel" loading="lazy" />
+        <div class="pillar-info">
+          <span class="pillar-tag">02 — Stay</span>
+          <h3>The Hotel</h3>
+          <p>Heritage rooms and suites for pilgrims, families and travellers.</p>
+          <span class="pillar-link">Explore Rooms →</span>
+        </div>
+      </a>
+      <a href="banquets.html" class="pillar-card" data-reveal-card>
+        <img src="https://image.pollinations.ai/prompt/grand%20indian%20wedding%20banquet%20hall%20chandeliers%20marigold%20decor%20stage%20cinematic?width=800&height=1100&nologo=true&seed=63" alt="The banquets" loading="lazy" />
+        <div class="pillar-info">
+          <span class="pillar-tag">03 — Celebrate</span>
+          <h3>The Banquets</h3>
+          <p>Halls, courtyard and lawn for weddings and grand occasions.</p>
+          <span class="pillar-link">Explore Venues →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════ SIGNATURE DISHES TEASER ══════════ -->
+  <section class="signature section" id="signature" style="background: var(--bg);">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>From the Kitchen</p>
+      <h2 class="section-title" data-reveal>Plates worth<br /><em>the pilgrimage</em></h2>
+    </div>
+
+    <div class="dish-grid container">
+      <article class="dish-card" data-reveal-card>
+        <div class="dish-img">
+          <img src="https://image.pollinations.ai/prompt/dal%20makhani%20black%20lentils%20butter%20swirl%20copper%20bowl%20fine%20dining%20dark%20moody%20food%20photography?width=800&height=1000&nologo=true&seed=101" alt="Patram Dal Makhani" loading="lazy" />
+        </div>
+        <div class="dish-info">
+          <h3>Patram Dal Makhani</h3>
+          <p>Black lentils simmered overnight, white butter, slow tandoor smoke</p>
+          <span class="dish-price">₹425</span>
+        </div>
+      </article>
+
+      <article class="dish-card" data-reveal-card>
+        <div class="dish-img">
+          <img src="https://image.pollinations.ai/prompt/paneer%20tikka%20charred%20skewers%20tandoor%20fine%20dining%20plating%20dark%20slate%20food%20photography?width=800&height=1000&nologo=true&seed=102" alt="Angara Paneer Tikka" loading="lazy" />
+        </div>
+        <div class="dish-info">
+          <h3>Angara Paneer Tikka</h3>
+          <p>Charcoal-kissed cottage cheese, smoked yoghurt, mint chutney</p>
+          <span class="dish-price">₹395</span>
+        </div>
+      </article>
+
+      <article class="dish-card" data-reveal-card>
+        <div class="dish-img">
+          <img src="https://image.pollinations.ai/prompt/wild%20mushroom%20risotto%20truffle%20parmesan%20fine%20dining%20elegant%20plating%20dark%20background%20food%20photography?width=800&height=1000&nologo=true&seed=103" alt="Truffle Khumb Risotto" loading="lazy" />
+        </div>
+        <div class="dish-info">
+          <h3>Truffle Khumb Risotto</h3>
+          <p>Carnaroli rice, wild mushrooms, truffle oil, aged parmesan</p>
+          <span class="dish-price">₹545</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="container" style="text-align: center; margin-top: clamp(36px, 5vw, 56px);">
+      <a href="menu.html" class="btn btn-ghost" data-reveal data-magnetic>View the Full Menu</a>
+    </div>
+  </section>
+
+  <!-- ══════════ FULL-BLEED PARALLAX BREAK ══════════ -->
+  <section class="break">
+    <div class="break-bg" data-parallax-bg>
+      <img src="https://image.pollinations.ai/prompt/ganga%20aarti%20haridwar%20evening%20diyas%20floating%20lamps%20river%20cinematic%20wide%20shot?width=1920&height=1080&nologo=true&seed=31" alt="Ganga aarti" loading="lazy" />
+    </div>
+    <div class="break-content">
+      <h2 data-reveal>"Atithi Devo<br /><em>Bhava</em>"</h2>
+      <p data-reveal>— The guest is God · Our founding belief</p>
+    </div>
+  </section>
+
+  <!-- ══════════ EXPERIENCES TEASER ══════════ -->
+  <section class="section" id="experiences" style="background: var(--bg-soft);">
+    <div class="container split">
+      <figure class="split-img" data-reveal-card>
+        <img src="https://image.pollinations.ai/prompt/rooftop%20dinner%20candlelight%20india%20evening%20river%20view%20lanterns%20romantic%20cinematic?width=800&height=1000&nologo=true&seed=71" alt="Rooftop dining" loading="lazy" />
+      </figure>
+      <div class="split-text">
+        <p class="section-eyebrow" data-reveal>Beyond the Table</p>
+        <h2 class="section-title" data-reveal>Curated<br /><em>experiences</em></h2>
+        <div class="split-body" data-reveal>
+          <p>
+            Rooftop dinners under Haridwar's night sky. High tea in the courtyard.
+            Folk musicians by lamplight, and cooking classes with our khansamas —
+            the haveli offers more than a meal or a bed.
+          </p>
+        </div>
+        <a href="experiences.html" class="btn btn-ghost" data-reveal data-magnetic>See All Experiences</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TESTIMONIALS ══════════ -->
+  <section class="testimonials section">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Voices</p>
+      <div class="quote-wrap" data-reveal>
+        <blockquote class="quote active" data-quote>
+          <p>"We came for one dinner and stayed three nights. Patram Haveli is Haridwar's best-kept secret."</p>
+          <cite>— Ananya & Rohan, Delhi</cite>
+        </blockquote>
+        <blockquote class="quote" data-quote>
+          <p>"Our daughter's wedding for 800 guests, handled without a single hiccup. The courtyard pheras were magical."</p>
+          <cite>— The Aggarwal Family, Dehradun</cite>
+        </blockquote>
+        <blockquote class="quote" data-quote>
+          <p>"The dal makhani alone is worth the drive from Rishikesh. Service that feels like family."</p>
+          <cite>— Uttarakhand Travel Journal</cite>
+        </blockquote>
+      </div>
+      <div class="quote-nav" data-reveal>
+        <button class="quote-dot active" data-quote-dot aria-label="Quote 1"></button>
+        <button class="quote-dot" data-quote-dot aria-label="Quote 2"></button>
+        <button class="quote-dot" data-quote-dot aria-label="Quote 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA BAND ══════════ -->
+  <section class="cta-band">
+    <h2 data-reveal>The haveli<br /><em>awaits you</em></h2>
+    <p data-reveal>Book a table, a room or an entire celebration — our team responds within the hour.</p>
+    <div class="hero-actions" data-reveal>
+      <a href="reservations.html" class="btn btn-solid" data-magnetic>Reserve Now</a>
+      <a href="contact.html" class="btn btn-ghost" data-magnetic>Contact Us</a>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+        <p>Restaurant · Hotel · Banquets —<br />a heritage of hospitality in Haridwar.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <p>
+          <a href="restaurant.html">Restaurant</a> · <a href="menu.html">Menu</a><br />
+          <a href="hotel.html">Hotel</a> · <a href="banquets.html">Banquets</a><br />
+          <a href="weddings.html">Weddings</a> · <a href="experiences.html">Experiences</a><br />
+          <a href="gallery.html">Gallery</a> · <a href="about.html">About</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <p>Khasra No. 107, Santarshah<br />Haridwar, Uttarakhand 249405</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p><a href="tel:+918864829962">+91 88648 29962</a><br /><a href="mailto:hello@patramhaveli.in">hello@patramhaveli.in</a><br />Open Daily · 11 AM — 11 PM</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Patram Haveli. All rights reserved.</span>
+      <span>Instagram · Facebook · X</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

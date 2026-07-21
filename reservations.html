@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservations — PATRAM HAVELI | Book a Table, Room or Venue</title>
+  <meta name="description" content="Reserve at Patram Haveli, Haridwar — book a restaurant table, a heritage hotel room, or enquire for banquet and wedding dates. Confirmed within the hour." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════ CUSTOM CURSOR ══════════ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+    <nav class="nav-links">
+      <a href="restaurant.html" data-magnetic>Restaurant</a>
+      <a href="hotel.html" data-magnetic>Hotel</a>
+      <a href="banquets.html" data-magnetic>Banquets</a>
+      <a href="experiences.html" data-magnetic>Experiences</a>
+      <a href="gallery.html" data-magnetic>Gallery</a>
+      <a href="about.html" data-magnetic>About</a>
+      <a href="contact.html" data-magnetic>Contact</a>
+      <a href="reservations.html" class="nav-cta" data-magnetic>Reserve</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="restaurant.html">Restaurant</a>
+    <a href="menu.html">Menu</a>
+    <a href="hotel.html">Hotel</a>
+    <a href="banquets.html">Banquets</a>
+    <a href="weddings.html">Weddings</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservations.html">Reserve</a>
+  </div>
+
+  <!-- ══════════ RESERVATION ══════════ -->
+  <section class="reserve section" id="reserve" style="min-height: 100svh; display: flex; align-items: center; padding-top: clamp(130px, 16vw, 190px);">
+    <div class="reserve-bg">
+      <img src="https://image.pollinations.ai/prompt/luxury%20indian%20restaurant%20table%20setting%20candles%20brass%20heritage%20haveli%20dark%20elegant%20cinematic?width=1920&height=1080&nologo=true&seed=1201" alt="" loading="lazy" />
+    </div>
+    <div class="container reserve-inner">
+      <p class="section-eyebrow" data-reveal>Reservations</p>
+      <h2 class="section-title" data-reveal>The haveli<br /><em>awaits</em></h2>
+      <form class="reserve-form" id="reserveForm" data-enquiry data-reveal>
+        <div class="form-row">
+          <div class="form-field" style="grid-column: 1 / -1;">
+            <label for="enquiryType">I would like to book</label>
+            <select id="enquiryType">
+              <option value="table">A table at the restaurant</option>
+              <option value="room">A room at the hotel</option>
+              <option value="banquet">A banquet / wedding venue</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="rName">Name</label>
+            <input type="text" id="rName" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="rPhone">Phone</label>
+            <input type="tel" id="rPhone" placeholder="+91" required />
+          </div>
+        </div>
+
+        <!-- Table fields -->
+        <div data-enquiry-fields="table">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="tDate">Date</label>
+              <input type="date" id="tDate" />
+            </div>
+            <div class="form-field">
+              <label for="tTime">Time</label>
+              <select id="tTime">
+                <option>12:30 PM</option><option>1:30 PM</option><option>7:00 PM</option>
+                <option>8:00 PM</option><option>9:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="tGuests">Guests</label>
+              <select id="tGuests">
+                <option>2 Guests</option><option>4 Guests</option><option>6 Guests</option>
+                <option>8+ Guests</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="tSeating">Seating</label>
+              <select id="tSeating">
+                <option>Dining Hall</option><option>Courtyard</option>
+                <option>Rooftop</option><option>Private Dining Room</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room fields -->
+        <div data-enquiry-fields="room">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="hCheckin">Check-in</label>
+              <input type="date" id="hCheckin" />
+            </div>
+            <div class="form-field">
+              <label for="hCheckout">Check-out</label>
+              <input type="date" id="hCheckout" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="hRoom">Room Type</label>
+              <select id="hRoom">
+                <option>Heritage Room — ₹4,500</option>
+                <option>Jharokha Suite — ₹7,500</option>
+                <option>Maharaja Suite — ₹12,500</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="hGuests">Guests</label>
+              <select id="hGuests">
+                <option>1 Guest</option><option>2 Guests</option>
+                <option>3 Guests</option><option>4 Guests</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banquet fields -->
+        <div data-enquiry-fields="banquet">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bDate">Event Date</label>
+              <input type="date" id="bDate" />
+            </div>
+            <div class="form-field">
+              <label for="bVenue">Venue</label>
+              <select id="bVenue">
+                <option>The Darbar Hall (up to 700)</option>
+                <option>The Heritage Courtyard (up to 350)</option>
+                <option>The Patram Lawn (up to 1,000)</option>
+                <option>Not sure — advise me</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bType">Occasion</label>
+              <select id="bType">
+                <option>Wedding</option><option>Reception</option><option>Sagai / Roka</option>
+                <option>Birthday / Anniversary</option><option>Corporate Event</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="bGuests">Expected Guests</label>
+              <select id="bGuests">
+                <option>Up to 100</option><option>100 — 300</option>
+                <option>300 — 600</option><option>600 — 1,000</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-solid reserve-btn" data-magnetic>Request Reservation</button>
+        <p class="reserve-note"></p>
+      </form>
+      <p style="margin-top: 26px; font-size: 0.78rem; color: var(--ink-dim);" data-reveal>
+        Prefer to talk? Call or WhatsApp <a href="tel:+918864829962" style="color: var(--gold);">+91 88648 29962</a> — 9 AM to 10 PM, every day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
+        <p>Restaurant · Hotel · Banquets —<br />a heritage of hospitality in Haridwar.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <p>
+          <a href="restaurant.html">Restaurant</a> · <a href="menu.html">Menu</a><br />
+          <a href="hotel.html">Hotel</a> · <a href="banquets.html">Banquets</a><br />
+          <a href="weddings.html">Weddings</a> · <a href="experiences.html">Experiences</a><br />
+          <a href="gallery.html">Gallery</a> · <a href="about.html">About</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <p>Khasra No. 107, Santarshah<br />Haridwar, Uttarakhand 249405</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p><a href="tel:+918864829962">+91 88648 29962</a><br /><a href="mailto:hello@patramhaveli.in">hello@patramhaveli.in</a><br />Open Daily · 11 AM — 11 PM</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Patram Haveli. All rights reserved.</span>
+      <span>Instagram · Facebook · X</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
