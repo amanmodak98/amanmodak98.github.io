@@ -5,21 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reservations — PATRAM HAVELI | Book a Table, Room or Venue</title>
   <meta name="description" content="Reserve at Patram Haveli, Haridwar — book a restaurant table, a heritage hotel room, or enquire for banquet and wedding dates. Confirmed within the hour." />
+  <link rel="canonical" href="https://patramhaveli.in/reservations.html" />
+
+  <!-- Icons & PWA -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Performance: preconnect to origins used by every page -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://image.pollinations.ai" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Patram Haveli" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:title" content="Reservations — Patram Haveli | Book a Table, Room or Venue" />
+  <meta property="og:description" content="Reserve at Patram Haveli, Haridwar — book a restaurant table, a heritage hotel room, or enquire for banquet and wedding dates." />
+  <meta property="og:url" content="https://patramhaveli.in/reservations.html" />
+  <meta property="og:image" content="https://patramhaveli.in/assets/og-default.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Reserve at Patram Haveli" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reservations — Patram Haveli | Book a Table, Room or Venue" />
+  <meta name="twitter:description" content="Reserve at Patram Haveli, Haridwar — book a restaurant table, a heritage hotel room, or enquire for banquet and wedding dates." />
+  <meta name="twitter:image" content="https://patramhaveli.in/assets/og-default.svg" />
+
+  <!-- Structured data: Reservation -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://patramhaveli.in/reservations.html#webpage",
+        "url": "https://patramhaveli.in/reservations.html",
+        "name": "Reservations — Patram Haveli",
+        "isPartOf": { "@id": "https://patramhaveli.in/#website" },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://patramhaveli.in/reservations.html",
+          "inLanguage": "en-IN",
+          "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+        },
+        "result": { "@type": "Reservation", "name": "Patram Haveli Reservation" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://patramhaveli.in/" },
+          { "@type": "ListItem", "position": 2, "name": "Reservations", "item": "https://patramhaveli.in/reservations.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <noscript>
+    <style>
+      .preloader, .progress-bar, .whatsapp-fab, .back-to-top { display: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
 
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Reading progress bar -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
   <!-- ══════════ CUSTOM CURSOR ══════════ -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
   <!-- ══════════ NAVIGATION ══════════ -->
   <header class="nav" id="nav">
-    <a href="index.html" class="nav-logo">PATRAM<span>HAVELI</span></a>
-    <nav class="nav-links">
+    <a href="index.html" class="nav-logo" aria-label="Patram Haveli — Home">PATRAM<span>HAVELI</span></a>
+    <nav class="nav-links" aria-label="Primary">
       <a href="restaurant.html" data-magnetic>Restaurant</a>
       <a href="hotel.html" data-magnetic>Hotel</a>
       <a href="banquets.html" data-magnetic>Banquets</a>
@@ -29,13 +103,13 @@
       <a href="contact.html" data-magnetic>Contact</a>
       <a href="reservations.html" class="nav-cta" data-magnetic>Reserve</a>
     </nav>
-    <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span>
     </button>
   </header>
 
   <!-- ══════════ MOBILE MENU ══════════ -->
-  <div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="restaurant.html">Restaurant</a>
     <a href="menu.html">Menu</a>
@@ -47,9 +121,10 @@
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="reservations.html">Reserve</a>
-  </div>
+  </nav>
 
   <!-- ══════════ RESERVATION ══════════ -->
+  <main id="main">
   <section class="reserve section" id="reserve" style="min-height: 100svh; display: flex; align-items: center; padding-top: clamp(130px, 16vw, 190px);">
     <div class="reserve-bg">
       <img src="https://image.pollinations.ai/prompt/luxury%20indian%20restaurant%20table%20setting%20candles%20brass%20heritage%20haveli%20dark%20elegant%20cinematic?width=1920&height=1080&nologo=true&seed=1201" alt="" loading="lazy" />
@@ -189,6 +264,7 @@
   </section>
 
   <!-- ══════════ FOOTER ══════════ -->
+  </main>
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -215,11 +291,23 @@
     </div>
     <div class="container footer-bottom">
       <span>© 2026 Patram Haveli. All rights reserved.</span>
-      <span>Instagram · Facebook · X</span>
+      <span><a href="https://instagram.com/patramhaveli" rel="noopener">Instagram</a> · <a href="https://facebook.com/patramhaveli" rel="noopener">Facebook</a> · <a href="https://twitter.com/patramhaveli" rel="noopener">X</a></span>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.min.js"></script>
-  <script src="main.js"></script>
+  <!-- Floating: WhatsApp + Back to top -->
+  <a class="whatsapp-fab" href="https://wa.me/918864829962?text=Hello%20Patram%20Haveli" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-magnetic>
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.143-.345.158-.717.158-1.09 0-.187-.043-.36-.13-.502-.158-.273-.66-.402-1.018-.402zm-2.95 8.03c-1.918 0-3.792-.51-5.45-1.49l-3.857 1.232 1.246-3.733a11.31 11.31 0 0 1-1.762-5.945c0-6.26 5.097-11.357 11.357-11.357 6.26 0 11.357 5.097 11.357 11.357 0 6.26-5.097 11.357-11.357 11.357zm0-23.86C9.84 1.375 4.103 7.112 4.103 14.43c0 2.357.616 4.65 1.79 6.66L4 31.625l10.71-1.79a11.43 11.43 0 0 0 5.45 1.39c6.26 0 11.357-5.097 11.357-11.357 0-3.04-1.184-5.897-3.335-8.04-2.15-2.143-5.01-3.335-8.04-3.335z"/>
+    </svg>
+    <span class="whatsapp-label">WhatsApp Us</span>
+  </a>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" aria-hidden="true">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.min.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

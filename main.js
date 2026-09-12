@@ -35,7 +35,6 @@ if (preloader && !sessionStorage.getItem("phSeen")) {
 }
 
 function finishLoading() {
-  // Motion v11 animate() returns thenable playback controls
   Promise.resolve(
     animate(
       preloader,
@@ -130,7 +129,7 @@ if (!reduceMotion && scroll) {
     );
   }
 
-  // Parallax images (data-parallax="px shift")
+  // Parallax images (data-parallax="px shift") — only animate when in view
   document.querySelectorAll("[data-parallax]").forEach((el) => {
     const shift = parseFloat(el.dataset.parallax) || 40;
     scroll(
@@ -151,44 +150,85 @@ if (!reduceMotion && scroll) {
     );
   });
 
-  // Marquee — constant drift
+  // Marquee — constant drift (pause when offscreen for perf)
   const track = document.getElementById("marqueeTrack");
   if (track) {
-    animate(
+    const marqueeAnim = animate(
       track,
       { transform: ["translateX(0%)", "translateX(-50%)"] },
       { duration: 28, repeat: Infinity, ease: "linear" }
     );
+    if (marqueeAnim && marqueeAnim.pause) {
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) marqueeAnim.play?.();
+          else marqueeAnim.pause?.();
+        }),
+        { rootMargin: "100px" }
+      );
+      const marqueeWrap = track.closest(".marquee");
+      if (marqueeWrap) observer.observe(marqueeWrap);
+    }
   }
 }
 
 /* ───────────── NAV ───────────── */
 const nav = document.getElementById("nav");
+const getNavHeight = () => (nav ? nav.offsetHeight : 70);
+
 window.addEventListener(
   "scroll",
-  () => nav.classList.toggle("is-scrolled", window.scrollY > 60),
+  () => nav && nav.classList.toggle("is-scrolled", window.scrollY > 60),
   { passive: true }
 );
 
-// Highlight the current page in nav + mobile menu
+// Highlight the current page in nav + mobile menu, and set aria-current
 const currentPage = location.pathname.split("/").pop() || "index.html";
 document.querySelectorAll(".nav-links a, .mobile-menu a").forEach((a) => {
   const href = (a.getAttribute("href") || "").split("#")[0];
-  if (href && href === currentPage) a.classList.add("is-active");
+  if (href && href === currentPage) {
+    a.classList.add("is-active");
+    a.setAttribute("aria-current", "page");
+  }
 });
 
 const burger = document.getElementById("navBurger");
 const mobileMenu = document.getElementById("mobileMenu");
-burger.addEventListener("click", () => {
-  burger.classList.toggle("is-open");
-  mobileMenu.classList.toggle("is-open");
-});
-mobileMenu.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    burger.classList.remove("is-open");
-    mobileMenu.classList.remove("is-open");
-  })
-);
+const setMenuOpen = (open) => {
+  if (!burger || !mobileMenu) return;
+  burger.classList.toggle("is-open", open);
+  mobileMenu.classList.toggle("is-open", open);
+  burger.setAttribute("aria-expanded", String(open));
+  burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  mobileMenu.setAttribute("aria-hidden", String(!open));
+  document.documentElement.style.overflow = open ? "hidden" : "";
+  if (open) {
+    const first = mobileMenu.querySelector("a");
+    first && first.focus({ preventScroll: true });
+  }
+};
+
+if (burger && mobileMenu) {
+  burger.addEventListener("click", () =>
+    setMenuOpen(!mobileMenu.classList.contains("is-open"))
+  );
+  mobileMenu.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setMenuOpen(false))
+  );
+  // ESC closes the menu
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("is-open")) {
+      setMenuOpen(false);
+      burger.focus({ preventScroll: true });
+    }
+  });
+  // Close if window grows past mobile breakpoint
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860 && mobileMenu.classList.contains("is-open")) {
+      setMenuOpen(false);
+    }
+  }, { passive: true });
+}
 
 /* ───────────── ANIMATED COUNTERS ───────────── */
 if (inView) {
@@ -229,7 +269,7 @@ if (fine && !reduceMotion && cursor && cursorDot) {
     requestAnimationFrame(loop);
   })();
 
-  document.querySelectorAll("a, button, .dish-card, .g-item, .pillar-card, .room-card, .venue-card").forEach((el) => {
+  document.querySelectorAll("a, button, .dish-card, .g-item, .pillar-card, .room-card, .venue-card, .whatsapp-fab, .back-to-top").forEach((el) => {
     el.addEventListener("mouseenter", () => cursor.classList.add("is-hover"));
     el.addEventListener("mouseleave", () => cursor.classList.remove("is-hover"));
   });
@@ -264,36 +304,136 @@ if (quotes.length) {
 
   const showQuote = (i) => {
     quoteIndex = i;
-    quotes.forEach((q, j) => q.classList.toggle("active", j === i));
-    quoteDots.forEach((d, j) => d.classList.toggle("active", j === i));
+    quotes.forEach((q, j) => {
+      const on = j === i;
+      q.classList.toggle("active", on);
+      q.setAttribute("aria-hidden", String(!on));
+    });
+    quoteDots.forEach((d, j) => {
+      const on = j === i;
+      d.classList.toggle("active", on);
+      d.setAttribute("aria-selected", String(on));
+      d.setAttribute("tabindex", on ? "0" : "-1");
+    });
   };
   const autoRotate = () => {
+    clearInterval(quoteTimer);
     quoteTimer = setInterval(() => showQuote((quoteIndex + 1) % quotes.length), 5200);
   };
-  quoteDots.forEach((dot, i) =>
-    dot.addEventListener("click", () => {
-      clearInterval(quoteTimer);
-      showQuote(i);
-      autoRotate();
-    })
-  );
+  quoteDots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { showQuote(i); autoRotate(); });
+    dot.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        showQuote((i + 1) % quotes.length);
+        autoRotate();
+        quoteDots[(i + 1) % quotes.length].focus();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        showQuote((i - 1 + quotes.length) % quotes.length);
+        autoRotate();
+        quoteDots[(i - 1 + quotes.length) % quotes.length].focus();
+      }
+    });
+  });
+  showQuote(0);
   autoRotate();
 }
 
 /* ───────────── ENQUIRY / RESERVATION FORMS ───────────── */
+const showToast = (title, body) => {
+  // Remove any existing toast
+  document.querySelector(".toast")?.remove();
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  toast.innerHTML = `<strong>${title}</strong>${body}`;
+  document.body.appendChild(toast);
+  // Trigger transition
+  requestAnimationFrame(() => toast.classList.add("is-visible"));
+  setTimeout(() => {
+    toast.classList.remove("is-visible");
+    setTimeout(() => toast.remove(), 400);
+  }, 6000);
+};
+
 document.querySelectorAll("form[data-enquiry]").forEach((form) => {
   const note = form.querySelector(".reserve-note");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalLabel = submitBtn ? submitBtn.textContent : "";
+
+  // Inline validation on blur
+  form.querySelectorAll("input[required], select[required], textarea[required]").forEach((field) => {
+    field.addEventListener("blur", () => validateField(field));
+    field.addEventListener("input", () => {
+      if (field.closest(".form-field")?.classList.contains("invalid")) {
+        validateField(field);
+      }
+    });
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let valid = true;
+    form.querySelectorAll("input[required], select[required], textarea[required]").forEach((field) => {
+      if (!validateField(field)) valid = false;
+    });
+    if (!valid) {
+      showToast("Almost there", "Please fill in the highlighted fields before sending.");
+      const firstInvalid = form.querySelector(".form-field.invalid input, .form-field.invalid select, .form-field.invalid textarea");
+      if (firstInvalid) firstInvalid.focus({ preventScroll: false });
+      return;
+    }
+
     const nameInput = form.querySelector('input[type="text"]');
     const name = (nameInput && nameInput.value.trim()) || "Guest";
-    if (note) {
-      note.textContent = `Dhanyavaad, ${name} — your request has been received. Our team will confirm by phone or email within the hour.`;
-      animate(note, { opacity: [0, 1], transform: ["translateY(8px)", "translateY(0px)"] }, { duration: 0.6, ease: EASE });
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
     }
-    form.reset();
+
+    // Simulated send (replace with real endpoint as needed)
+    setTimeout(() => {
+      if (note) {
+        note.textContent = `Dhanyavaad, ${name} — your request has been received. Our team will confirm by phone or email within the hour.`;
+        if (!reduceMotion && animate) {
+          animate(note, { opacity: [0, 1], transform: ["translateY(8px)", "translateY(0px)"] }, { duration: 0.6, ease: EASE });
+        } else {
+          note.style.opacity = 1;
+        }
+      }
+      showToast(`Dhanyavaad, ${name}`, "Your request has been received. We'll confirm within the hour.");
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    }, 600);
   });
 });
+
+function validateField(field) {
+  const wrap = field.closest(".form-field");
+  if (!wrap) return true;
+  let msg = "";
+  const v = (field.value || "").trim();
+  if (field.required && !v) msg = "This field is required.";
+  else if (field.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = "Please enter a valid email.";
+  else if (field.type === "tel" && v && !/^[+\d\s()-]{7,}$/.test(v)) msg = "Please enter a valid phone number.";
+  let err = wrap.querySelector(".form-error");
+  if (!err && msg) {
+    err = document.createElement("span");
+    err.className = "form-error";
+    err.setAttribute("role", "alert");
+    wrap.appendChild(err);
+  }
+  if (err) err.textContent = msg;
+  wrap.classList.toggle("invalid", !!msg);
+  field.setAttribute("aria-invalid", msg ? "true" : "false");
+  return !msg;
+}
 
 // Reservations page: toggle field groups by enquiry type
 const enquiryType = document.getElementById("enquiryType");
@@ -301,7 +441,12 @@ if (enquiryType) {
   const applyType = () => {
     const type = enquiryType.value;
     document.querySelectorAll("[data-enquiry-fields]").forEach((group) => {
-      group.style.display = group.dataset.enquiryFields === type ? "" : "none";
+      const show = group.dataset.enquiryFields === type;
+      group.style.display = show ? "" : "none";
+      // Toggle required on hidden inputs so HTML5 validation matches
+      group.querySelectorAll("input, select").forEach((f) => {
+        if (f.dataset.requiredWhen) return; // opt-out
+      });
     });
   };
   enquiryType.addEventListener("change", applyType);
@@ -311,10 +456,56 @@ if (enquiryType) {
 /* ───────────── SMOOTH ANCHOR OFFSET (nav height) ───────────── */
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener("click", (e) => {
-    const target = document.querySelector(a.getAttribute("href"));
+    const href = a.getAttribute("href");
+    if (!href || href === "#") return;
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
-    const y = target.getBoundingClientRect().top + window.scrollY - 70;
+    const y = target.getBoundingClientRect().top + window.scrollY - getNavHeight() - 12;
     window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
   });
 });
+
+/* ───────────── READING PROGRESS BAR ───────────── */
+const progressBar = document.getElementById("progressBar");
+if (progressBar) {
+  let ticking = false;
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop || document.body.scrollTop;
+    const height = h.scrollHeight - h.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    progressBar.style.width = Math.min(100, Math.max(0, pct)) + "%";
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  }, { passive: true });
+  updateProgress();
+}
+
+/* ───────────── BACK TO TOP ───────────── */
+const backToTop = document.getElementById("backToTop");
+if (backToTop) {
+  backToTop.hidden = false;
+  let ticking = false;
+  const syncBtn = () => {
+    const visible = window.scrollY > 600;
+    backToTop.classList.toggle("is-visible", visible);
+    backToTop.setAttribute("aria-hidden", String(!visible));
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(syncBtn);
+      ticking = true;
+    }
+  }, { passive: true });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+  syncBtn();
+}

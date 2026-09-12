@@ -1,0 +1,11 @@
+# Patram Haveli — Restaurant · Hotel · Banquets
+# Haridwar, Uttarakhand, India
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Crawl-delay is generous for a small static site
+Crawl-delay: 1
+
+Sitemap: https://patramhaveli.in/sitemap.xml
